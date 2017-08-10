@@ -1,0 +1,8 @@
+Comandos para executar o python manage
+sudo docker exec backend_django /bin/sh -c "python manage.py collectstatic --noinput"
+
+Comando para fazer o build do docker-composer
+sudo docker-compose build 
+
+Comando para startar o ambiente
+sudo docker-compose up 
