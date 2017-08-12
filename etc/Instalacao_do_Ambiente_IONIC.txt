@@ -111,3 +111,10 @@ depois tentei fazer o teste no aparelho novamente com o comando
 $ ionic cordova run android --device
 
 dessa vez com sucesso
+
+Para personalizar o Thema no Ionic é necessário o Sass
+$ sudo apt-get install gem ruby ruby-dev
+$ sudo gem install sass compass
+
+
+
