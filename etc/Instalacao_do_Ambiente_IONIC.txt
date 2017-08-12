@@ -84,7 +84,30 @@ $ echo ANDROID_HOME="/opt/android-sdk" >> /etc/environment
 Adicionar a variavel $PATH esses 2 caminhos 
 export PATH=${PATH}:/opt/android-sdk/platform-tools:/opt/android-sdk/tools
 
+Nesse ponto o Ambiente esta pronto 
+para testar entrei no diretorio do app criado pelo Ionic
+$ cd myapp
 
+Rodar esse comando para fazer o build no Aparelho
+$ ionic cordova run android --device
 
+Deu erro por nao encontrar o Gradle, mais o mesmo já estava instalado no diretorio do /opt/android-studio
+2 possiveis correções instalar o gradle ou adicionar o path dele a variavel de Ambiente /env/enviroment PATH
 
+Adicionei Manualmente o Path para o gradle 
+A varivale PATH dentro de /etc/enviroment ficou assim
+PATH="<O_que_ja_tinha_antes>:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/opt/android-studio/gradle/gradle-3.2/bin"
 
+Depois tive erro de "You have not accepted the license agreements of the following SDK component"
+
+Resolvi Abrindo a interface SDK Manage e adicionei o pacote 
+Google Play Licensing Library
+
+Essa etapa em linha de comando retiradao de uma imagem docker (https://hub.docker.com/r/agileek/ionic-framework/~/dockerfile/) Mais acho que para rodar esses comandos é necesario instalar o sdk pela linha de comando tb. por que não achei o android-accept-licenses.sh
+
+"/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter platform-tools,tools,build-tools-23.0.2,android-23,extra-android-support,extra-android-m2repository,extra-google-m2repository"
+
+depois tentei fazer o teste no aparelho novamente com o comando 
+$ ionic cordova run android --device
+
+dessa vez com sucesso
