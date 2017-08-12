@@ -1,10 +1,14 @@
 #!/bin/bash
 
-#echo Running Collectstatic. 
-#exec python /app/manage.py collectstatic --noinput
 
-#echo Running Migrate. 
-#exec python /app/manage.py migrate
+python manage.py migrate                  # Apply database migrations
+
+echo Running Collectstatic. 
+python manage.py collectstatic --noinput  # Collect static files
+
+
+
+
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
