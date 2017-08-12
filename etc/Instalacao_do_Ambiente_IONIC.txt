@@ -1,0 +1,90 @@
+Install Ionic
+https://ionicframework.com/getting-started/
+
+- Instal Nodejs NVM (Node Version Manager)  Ou Apenas baixar o Node e colocar em /usr/local (https://hub.docker.com/r/agileek/ionic-framework/~/dockerfile/)
+
+https://www.digitalocean.com/community/tutorials/como-instalar-o-node-js-no-ubuntu-16-04-pt
+
+sudo apt-get install build-essential libssl-dev
+
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh
+
+bash install_nvm.sh
+
+source ~/.profile
+
+Listar as versoes disponiveis 
+nvm ls-remote
+
+Instalar a versao mais recente no momento 
+nvm install 8.3.0
+
+Escolher a versao que vai usar
+nvm use 8.3.0
+
+node -v
+
+- Instalar IONIC CLI / Cordova
+$ npm install -g cordova ionic
+
+Testar o Ionic
+$ ionic start myApp tabs
+$ cd myApp
+$ ionic serve
+
+
+- Ambiente Cordova Android
+https://cordova.apache.org/docs/en/7.x/guide/platforms/android/
+
+--- Java JDK 8
+Unistall Openjdk ( rodar esse como root ) https://community.linuxmint.com/tutorial/view/1372
+$ sudo apt-get update && apt-get remove openjdk*
+
+(https://www.digitalocean.com/community/tutorials/como-instalar-o-java-com-apt-get-no-ubuntu-16-04-pt)
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+
+Adicionar Essas Respostas ao debconf para que a instalacao do pacote JDK8 possa ser Silent. (https://askubuntu.com/questions/190582/installing-java-automatically-with-silent-option) Outra Forma de instalar com Silent https://hub.docker.com/r/agileek/ionic-framework/~/dockerfile/
+$ echo debconf shared/accepted-oracle-license-v1-1 select true | \
+  sudo debconf-set-selections
+
+$ echo debconf shared/accepted-oracle-license-v1-1 seen true | \
+  sudo debconf-set-selections
+
+$ sudo apt-get install oracle-java8-installer
+
+Setar o java como default
+$ sudo apt-get install oracle-java8-set-default
+
+Para Testar abra outro terminal
+$ java -version
+
+Descobrir o Path onde o Java esta instalado
+$ sudo update-alternatives --config java
+
+Setar a variavel de ambiente JAVA_HOME ( No meu nao teve permissao com sudo tive que logar como root )
+$ echo JAVA_HOME="/usr/lib/jvm/java-8-oracle" >> /etc/environment
+
+
+--- Android SDK (https://cordova.apache.org/docs/en/7.x/guide/platforms/android/#installing-the-requirements)
+Baixar o Android studio
+Descompactar no /opt/android-studio
+Criar o diretorio para o SDK
+$ mkdir /opt/android-sdk
+
+Instalei pela interface rodando 
+$ cd /opt/android-studio/bin/
+$ ./studio.sh
+
+Escolhi a opcao custom, alterei o path do sdk para /opt/android-sdk
+
+Criar as variaveis de Ambiente
+$ echo ANDROID_HOME="/opt/android-sdk" >> /etc/environment
+
+Adicionar a variavel $PATH esses 2 caminhos 
+export PATH=${PATH}:/opt/android-sdk/platform-tools:/opt/android-sdk/tools
+
+
+
+
+
