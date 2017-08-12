@@ -3,6 +3,8 @@
 # FROM directive instructing base image to build upon
 FROM python:3
 
+ENV PYTHONUNBUFFERED 1
+
 #RUN apt-get update && apt-get install -y \
 
 

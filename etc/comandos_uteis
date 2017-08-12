@@ -6,3 +6,15 @@ sudo docker-compose build
 
 Comando para startar o ambiente
 sudo docker-compose up 
+
+Comando para Parar todos os containers 
+sudo docker stop $(sudo docker ps -a -q)
+
+Comando para remover todos os containers
+sudo docker rm $(sudo docker ps -a -q)
+
+Mostrar todos os Containers
+sudo docker ps -a
+
+Remover uma imagem 
+sudo docker image <image_id> (retornado pelo image ls)
